@@ -2,7 +2,7 @@
 # compiler setting
 ###############################################################################
 CC      = gcc
-CFLAGS  = -g -Wall
+CFLAGS  = -g -Wall -DHY_DEBUG_MODE=1
 LIBS    = -lm
 INCPATH =
 DIR     = $(shell pwd)
@@ -18,7 +18,7 @@ EXEC      = $(shell basename $(DIR))
 ###############################################################################
 .PHONY : clean clean_all
 ###############################################################################
-all: $(EXEC)
+all: clean $(EXEC)
 
 %.o:%.c
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@

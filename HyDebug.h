@@ -7,9 +7,15 @@
 #include <stdarg.h>
 #include <errno.h>
 
+
+
+
 #define HYDEBUG_MAXLINE 256
 
 
+
+
+#if HY_DEBUG_MODE
 static void err_doit(int, int, const char* fmt, va_list ap);
 static void err_msg(const char* fmt, ...);
 
@@ -26,6 +32,13 @@ static void err_msg(const char* fmt, ...);
     exit(1);\
 }
 
+#else
+    #define HYDEBUG(fmt, args...)
+    #define HYDEBUG_QUIT(fmt, args...)
+#endif
+
+
+#if HY_DEBUG_MODE
 
 static
 void err_msg(const char* fmt, ...) {
@@ -54,6 +67,7 @@ void err_doit(int errno_flag, int error, const char* fmt, va_list ap) {
     fputs(buf, stderr);
     fflush(NULL);
 }
+#endif
 
 
 #endif /* end of include guard: HYDEBUG_H */
