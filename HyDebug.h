@@ -7,13 +7,7 @@
 #include <stdarg.h>
 #include <errno.h>
 
-
-
-
 #define HYDEBUG_MAXLINE 256
-
-
-
 
 #if HY_DEBUG_MODE
 static void err_doit(int, int, const char* fmt, va_list ap);
